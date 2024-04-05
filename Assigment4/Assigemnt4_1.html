@@ -23,7 +23,7 @@
 
     <div class="myCalculator">
         <center>
-            <table
+            <table id="input_reset"
                 style="  border: 1px solid black;width: 500px; height: 200px; background-color: rgb(177, 189, 189); ">
                 <tr>
                     <td style="font-family: 'Times New Roman', Times, serif; font-weight: bolder;"> ENTER Number 1 :</td>
@@ -57,7 +57,7 @@
                             <td> <input type="button" value="Subtraction" onclick="Sub()" style="background-color: black; color: aliceblue; font-family: 'Times New Roman', Times, serif; border-radius: 5px;height: 30px;"   /></td>
                             <td> <input type="button" value="Multiplaction " onclick="Multi()"  style="background-color: black;color: aliceblue;font-family: 'Times New Roman', Times, serif; border-radius: 5px;height: 30px;"  /></td>
                             <td> <input type="button" value="Divsion" onclick="Div()"  style="background-color: black;color: aliceblue;font-family: 'Times New Roman', Times, serif; border-radius: 5px;height: 30px;"  /></td>
-                            <td><input type="reset" value="clear" onclick="clear()" style="background-color: black; color: aliceblue;font-family: 'Times New Roman', Times, serif; border-radius: 5px;height: 30px;"  /></td>
+                            <td ><input type="button" value="Clear" onclick="clear()" id="clear" style="background-color: black; color: aliceblue;font-family: 'Times New Roman', Times, serif; border-radius: 5px;height: 30px;"  /></td>
 
                         </table>
                     </td>
@@ -78,7 +78,6 @@
             var refToResult = document.getElementById("Result");
 
 
-
             var isBoxEmptx = IsEmpty("NUM1", "errorMessage1", "1 ixs requried");
 
             var isBoxEmpty = IsEmpty("NUM2", "errorMessage2", "2 is required");
@@ -96,6 +95,7 @@
                 refToResult.innerText = "";
             }
 
+            
 
 
         }
@@ -144,8 +144,24 @@
 
 
         }
+
         function clear() {
-            console.clear();
+            debugger
+            var refToNUM1 = document.getElementById("NUM1");
+    
+            var refToNUM2 = document.getElementById("NUM2");
+
+            var refToResult = document.getElementById("Result");
+
+            // var refToClear = document.getElementById("clear");
+            document.getElementById("input_reset").reset();
+
+            
+            refToNUM1.value =  " ";
+            refToNUM2.value = " ";
+
+          
+           refToClear.innerText =  " ";   
 
         }
 

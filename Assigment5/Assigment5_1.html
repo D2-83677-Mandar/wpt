@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+
+            position: absolute;
+            left: -60px;
+            top: -15px;
+            width: 370px;
+            height: auto;
+        }
+
+        .Road {
+            position: relative;
+            width: 800px;
+            height: 40px;
+            top: 122px;
+            left: -8px;
+            color: aliceblue;
+            text-align: center;
+
+            background-color: black;
+            border: 1px solid black;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="car" class="container">
+        <img src="th.jpeg" alt=" car image">
+    </div>
+    <div class="Road"> ---------------------------------------------- Road ----------------------------------------------------------------- </div>
+
+    <br>
+    <br>
+
+    <div> 
+        
+    </div>
+
+
+    <div style="top: 100px; position: relative; text-align: left;">
+        <input type="button" value="Start" onclick="Move()" name="Start" id="Move"
+            style="top: 200px ; height: 35px; width: 100px; background-color: green;">
+
+        <input type="button" name="Stop" id="stop" onclick="Stop()" value="Stop"
+            style="height:  35px ;width: 100px; background-color: red;"> <br>
+            <br>
+
+
+            X axis :  <input type="text"  id="x_axis" /><br><br>
+
+            Y axis : <input type="text" id="y_axis"/><br><br>
+           
+
+
+    </div>
+
+
+ 
+    <script>
+        var leftval = -60;
+        var topval =  10;
+      //  var Topval = 1
+
+         var ArrayqueNos = new Array();
+
+          function Move(){
+           var queNos = setInterval(keepmoving ,100)
+           ArrayqueNos.push(queNos);
+         }
+
+         function Stop(){
+            for(var i = 0; i < ArrayqueNos.length; i++){
+                var qtostop = ArrayqueNos[i];
+                clearInterval(qtostop);
+            }
+
+         }
+
+         function keepmoving(){
+
+
+            var refTocar =   document.getElementById("car");
+            
+            var refToXaxis = document.getElementById("x_axis");
+            var refToYaxis = document.getElementById("y_axis");
+
+         
+        
+                if(leftval >=  750 && topval >= 348  ){
+                    stop();
+             
+
+              
+                }
+                else {
+                    if(leftval < 750 ){
+                        var refTocar =   document.getElementById("car");
+            
+                leftval = leftval + 1;
+                refTocar.style.left = leftval+"px";
+                refToXaxis.value = leftval + 60;
+
+                    }
+                       else{
+                    var  refTocar = document.getElementById("car");
+
+                    topval = topval + 1;
+                    refTocar.style.top = topval + "px";
+                    refToYaxis.value = topval - 10;
+                    refTocar.style.rotate =  "45deg";
+
+                }
+            }
+                
+
+
+
+                // else{
+                //     var refTocar =   document.getElementById("car");
+                //     topval
+
+
+                // }
+            }
+
+
+         
+
+
+    </script>
+
+
+</body>
+
+</html>
