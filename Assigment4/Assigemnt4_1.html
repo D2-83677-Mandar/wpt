@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+
+
+
+    <style>
+
+
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <h1 style="text-align: center; background-color: blanchedalmond; ">CALACULATOR</h1>
+    </div>
+
+
+    <div class="myCalculator">
+        <center>
+            <table
+                style="  border: 1px solid black;width: 500px; height: 200px; background-color: rgb(177, 189, 189); ">
+                <tr>
+                    <td style="font-family: 'Times New Roman', Times, serif; font-weight: bolder;"> ENTER Number 1 :</td>
+                    <td  > <input type="text" id="NUM1" name="num1"></td>
+                    <td>
+                        <div id="errorMessage1" style="color: red;"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="font-family: 'Times New Roman', Times, serif; font-weight: bolder;"> ENTER Number 2 :</td>
+                    <td> <input type="text" id="NUM2" name="num2"></td>
+                    <td>
+                        <div id="errorMessage2" style="color: red;"></div>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td style="font-family: 'Times New Roman', Times, serif; font-weight: bolder; "> RESULT :</td>
+                    <td>
+                        <div id="Result"
+                            style="width: 180px; height: 20px; background-color:white;border: 1px solid black;"></div>
+                    </td>
+
+                </tr>
+
+                <tr>
+                    <td colspan="3" align="center">
+                        <table>
+
+                            <td > <input type="button" value="Addition" onclick="Add()" style="background-color: black;color: aliceblue;  font-family: 'Times New Roman', Times, serif; border-radius: 5px;height: 30px;"  /></td>
+                            <td> <input type="button" value="Subtraction" onclick="Sub()" style="background-color: black; color: aliceblue; font-family: 'Times New Roman', Times, serif; border-radius: 5px;height: 30px;"   /></td>
+                            <td> <input type="button" value="Multiplaction " onclick="Multi()"  style="background-color: black;color: aliceblue;font-family: 'Times New Roman', Times, serif; border-radius: 5px;height: 30px;"  /></td>
+                            <td> <input type="button" value="Divsion" onclick="Div()"  style="background-color: black;color: aliceblue;font-family: 'Times New Roman', Times, serif; border-radius: 5px;height: 30px;"  /></td>
+                            <td><input type="reset" value="clear" onclick="clear()" style="background-color: black; color: aliceblue;font-family: 'Times New Roman', Times, serif; border-radius: 5px;height: 30px;"  /></td>
+
+                        </table>
+                    </td>
+                </tr>
+
+
+
+            </table>
+        </center>
+
+    </div>
+
+    <script>
+
+        function Add() {
+            var refToNUM1 = document.getElementById("NUM1");
+            var refToNUM2 = document.getElementById("NUM2");
+            var refToResult = document.getElementById("Result");
+
+
+
+            var isBoxEmptx = IsEmpty("NUM1", "errorMessage1", "1 ixs requried");
+
+            var isBoxEmpty = IsEmpty("NUM2", "errorMessage2", "2 is required");
+            if (isBoxEmptx == false && isBoxEmpty == false) {
+
+                var xdata = parseInt(refToNUM1.value);
+                var yData = parseInt(refToNUM2.value);
+
+                var RESULT = xdata + yData;
+                refToResult.innerText = RESULT;
+
+
+            }
+            else {
+                refToResult.innerText = "";
+            }
+
+
+
+        }
+        function Sub() {
+
+            var refToNUM1 = document.getElementById("NUM1");
+            var valNum1 = refToNUM1.value;
+            var refToNUM2 = document.getElementById("NUM2");
+            var valNum2 = refToNUM2.value;
+            var refToResult = document.getElementById("Result");
+
+            var RESULT = valNum1 - valNum2;
+            refToResult.innerText = RESULT;
+
+
+
+        }
+
+
+        function Multi() {
+
+            var refToNUM1 = document.getElementById("NUM1");
+            var valNum1 = refToNUM1.value;
+            var refToNUM2 = document.getElementById("NUM2");
+            var valNum2 = refToNUM2.value
+            var refToResult = document.getElementById("Result");
+
+            var RESULT = valNum1 * valNum2;
+            refToResult.innerText = RESULT;
+        }
+
+
+
+        function Div() {
+            var refToNUM1 = document.getElementById("NUM1");
+            var valNum1 = refToNUM1.value;
+            var refToNUM2 = document.getElementById("NUM2");
+            var valNum2 = refToNUM2.value
+            var refToResult = document.getElementById("Result");
+
+
+            var RESULT = valNum1 / valNum2;
+            refToResult.innerText = RESULT;
+
+
+
+
+        }
+        function clear() {
+            console.clear();
+
+        }
+
+
+        function IsEmpty(numberid, errorcontrolid, errorMessage) {
+            var refToTxtBox = document.getElementById(numberid);
+            debugger;
+            var refToDivForErrorMessage = document.getElementById(errorcontrolid);
+            var dataInTxtBox = refToTxtBox.value;
+            var isBoxEmpty = true;
+            if (dataInTxtBox != "") {
+                refToDivForErrorMessage.innerText = "";
+                console.log(dataInTxtBox);
+                isBoxEmpty = false;
+            } else {
+                refToDivForErrorMessage.innerText = errorMessage;
+                isBoxEmpty = true;
+            }
+            return isBoxEmpty;
+        }
+        function IsItNumber(controlid, divid, errorMessage) {
+        var refToControl = document.getElementById(controlid);
+        var refToErrorControl = document.getElementById(divid);
+
+        var IsItNumber = false;
+
+        var isXValueText = isNaN(refToControl.value);
+        if (isXValueText == true) {
+          refToErrorControl.innerText = errorMessage;
+          IsItNumber = false;
+        } else {
+          refToErrorControl.innerText = "";
+          console.log(refToControl.value);
+          IsItNumber = true;
+        }
+
+        return IsItNumber;
+      }
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
